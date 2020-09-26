@@ -84,6 +84,10 @@ input:-ms-input-placeholder      {color:#24965ff7;}
   transform: scale(1.05);
 }
 
+.sup:hover {
+  transform: scale(1.05);
+}
+
 .red {
   background: red;
 }

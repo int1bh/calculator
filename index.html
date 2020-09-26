@@ -10,7 +10,7 @@
 
 <body>
   <div class="calculator">
-    <input type="text" disabled placeholder="0">
+    <input type="text" disabled >
     <div class="calc-name-wrapper">
       <img src="lable.png">
       <div>
@@ -20,33 +20,34 @@
       </div>
     </div>
     <div class="buttons">
-      <div class="numbers">&radic;</div>
-      <div class="numbers">&#37;</div>
-      <div class="numbers">&#8596;</div>
-      <div class="numbers">&#247;</div>
-      <div class="numbers red">C</div>
-      <div class="numbers">7</div>
-      <div class="numbers">8</div>
-      <div class="numbers">9</div>
-      <div class="numbers">&times;</div>
-      <div class="numbers blue">СП</div>
-      <div class="numbers">4</div>
-      <div class="numbers">5</div>
-      <div class="numbers">6</div>
-      <div class="numbers">-</div>
-      <div class="numbers blue">ИП</div>
-      <div class="numbers">1</div>
-      <div class="numbers">2</div>
-      <div class="numbers">3</div>
-      <div class="numbers">+</div>
-      <div class="numbers blue">П+</div>
-      <div class="numbers">0</div>
-      <div class="numbers">.</div>
-      <div class="numbers">/-/</div>
-      <div class="numbers">=</div>
-      <div class="numbers blue">П-</div>
+      <div operators class="numbers">&radic;</div>
+      <div operators class="numbers">&#37;</div>
+      <div operators class="numbers"><sup>&#8596;</sup></div>
+      <div operators class="numbers">&#247;</div>
+      <div operators class="numbers sup">x<sup><small>n</small></sup></div>
+      <div digits class="numbers">8</div>
+      <div digits class="numbers">7</div>
+      <div digits class="numbers">9</div>
+      <div operators class="numbers">&times;</div>
+      <div id="clear-all" class="numbers red">CE</div>
+      <div digits class="numbers">4</div>
+      <div digits class="numbers">5</div>
+      <div digits class="numbers">6</div>
+      <div operators class="numbers">-</div>
+      <div id="clear" class="numbers red">C</div>
+      <div digits class="numbers">1</div>
+      <div digits class="numbers">2</div>
+      <div digits class="numbers">3</div>
+      <div operators class="numbers">+</div>
+      <div operators class="numbers red"><sup>&#8592;</sup></div>
+      <div digits class="numbers">0</div>
+      <div id="decimal" class="numbers">.</div>
+      <div operators class="numbers">/-/</div>
+      <div id="result" class="numbers">=</div>
+      <div operators class="numbers blue">П</div>
     </div>
   </div>
+  <script src="index.js"></script>
 </body>
 
 </html>
