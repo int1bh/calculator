@@ -6,7 +6,12 @@ const digitsButtons = document.querySelectorAll('[digits]'); //цифровые 
 const operationButtons = document.querySelectorAll('[operators]'); //кнопки операций
 const clearButton = document.querySelector('#clear-all'); //полный сброс
 const decimalButton = document.querySelector('#decimal');//десятичная точка
-const deleteButton = document.querySelector('[delete]');
+const deleteButton = document.querySelector('[delete]');//удаление символа
+const negativeButton = document.querySelector('[negative]');//отрицательное число
+const sqrtButton = document.querySelector('[sqrt]');//извлечение корня
+const quadroButton = document.querySelector('[quadro]'); //возведение в квадрат
+const powButton = document.querySelector('[powN]');//возведение числа в степень n
+const percentButton = document.querySelector('[percent]'); //процент
 
 //******************************************************************************************
 
@@ -16,8 +21,7 @@ const deleteButton = document.querySelector('[delete]');
 
 let currentValue = 0,
     newValue = false,
-    //currentOperation = '',
-    sqrSqrtNumber = false,
+    sqrtValue = false,
     numberToPow = 0;
     
     
@@ -46,6 +50,21 @@ digitsButtons.forEach(button => {
 
 pressNumber();
 
+function decimal() {
+    decimalButton.addEventListener('click', (e) => {
+        if (newValue) {
+            display.placeholder = '0.';
+            newValue = false;
+        } else {
+            if (display.placeholder.indexOf('.') === -1) {
+                display.placeholder += '.';
+            }     
+        }
+    });
+}
+
+decimal();
+
 function getOperation() {
     operationButtons.forEach(operationButton => {
         operationButton.addEventListener('click', (e) => {
@@ -63,10 +82,7 @@ function getOperation() {
         currentValue *= localOperationMemory;
       } else if (MemoryPendingOperation === '÷') {
         currentValue /= localOperationMemory;
-      } else if (MemoryPendingOperation === 'xn') {
-          currentValue = Math.pow(currentValue, localOperationMemory);
-      }
-        else {
+      } else {
         currentValue = localOperationMemory;
       }
       display.placeholder = currentValue;
@@ -108,6 +124,75 @@ function deleteValue() {
 }
 
 deleteValue();
+
+function negative() {
+    negativeButton.addEventListener('click', (e) => {
+        if (display.value === '/-/') {
+            return;
+        }
+        if (display.placeholder.substring(0,1) === '-') {
+            display.placeholder = display.placeholder.substring(1);
+        } else {
+            display.placeholder = '-'+display.placeholder;
+        }
+    });
+}
+
+negative();
+
+
+
+function sqrt() {
+    sqrtButton.addEventListener('click', () => {
+        if (display.placeholder.substring(0,1) === '-') {
+            clearAll();
+            display.placeholder = 'Error!';
+            return;
+        }
+        
+        if (currentValue === 0) {
+            currentValue = Math.sqrt(parseFloat(display.placeholder));
+            display.placeholder = currentValue; 
+        } else {
+            display.placeholder = Math.sqrt(parseFloat(display.placeholder));
+            newValue = false;
+        }
+        sqrtValue = true;
+    });
+}
+
+sqrt();
+
+function quadro() {
+    quadroButton.addEventListener('click', () => {
+        if (currentValue === 0) {
+            currentValue = Math.pow(parseFloat(display.placeholder), 2);
+            display.placeholder = currentValue; 
+        } else {
+            display.placeholder = Math.pow(parseFloat(display.placeholder), 2);
+            newValue = false;
+        }
+        sqrtValue = true;
+    });
+}
+
+quadro();
+
+function powN() {
+    powButton.addEventListener('click', () => {
+        
+    });
+}
+
+powN();
+
+function getPercent() {
+    percentButton.addEventListener('click', () => {
+        
+    });
+}
+
+getPercent();
 
 
 
